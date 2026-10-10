@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,70 +8,169 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
       color: white;
     }
-    
-    .container {
-      max-width: 420px;
-      width: 100%;
+
+    /* Top Navigation */
+    .top-bar {
+      background: rgba(0, 0, 0, 0.5);
+      border-bottom: 2px solid #e94560;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-btn {
+      background: rgba(255,255,255,0.06);
+      border: 2px solid #e94560;
+      color: white;
+      padding: 11px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .menu-btn:hover, .menu-btn.active {
+      background: #e94560;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+    }
+
+    .page {
+      display: none;
+      padding: 35px 20px;
+      max-width: 520px;
+      margin: 0 auto;
       text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .avatar {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       border: 4px solid #e94560;
       object-fit: cover;
-      margin-bottom: 15px;
-      box-shadow: 0 0 25px #e94560;
+      margin-bottom: 18px;
+      box-shadow: 0 0 30px rgba(233, 69, 96, 0.6);
     }
     
     h1 {
-      font-size: 24px;
-      margin-bottom: 8px;
+      font-size: 26px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
     }
     
     .bio {
-      font-size: 15px;
-      color: #b8b8d1;
-      margin-bottom: 25px;
-      font-weight: bold;
+      font-size: 14px;
+      color: #a0a0c0;
+      margin-bottom: 28px;
+      font-weight: 600;
       letter-spacing: 1px;
     }
     
     .link {
       display: block;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
       border: 2px solid #e94560;
       color: white;
       padding: 16px;
-      margin-bottom: 14px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
+      margin-bottom: 13px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
     
     .link:hover {
       background: #e94560;
-      transform: scale(1.05);
+      transform: scale(1.04);
+      box-shadow: 0 0 22px rgba(233, 69, 96, 0.5);
     }
     
     .footer {
-      margin-top: 25px;
+      margin-top: 30px;
       font-size: 12px;
       color: #6c6c8a;
     }
 
+    /* Info Cards */
+    .info-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(233, 69, 96, 0.5);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      text-align: left;
+      transition: 0.3s;
+    }
+
+    .info-box:hover {
+      border-color: #e94560;
+      background: rgba(233, 69, 96, 0.08);
+    }
+
+    .info-box h3 {
+      color: #e94560;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .info-box p {
+      color: #b8b8d1;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(233, 69, 96, 0.2);
+      color: #e94560;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* Coming Soon */
+    .coming-soon {
+      margin-top: 60px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #e94560;
+      letter-spacing: 3px;
+      text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+    }
+
+    .coming-sub {
+      margin-top: 12px;
+      color: #a0a0c0;
+      font-size: 15px;
+    }
+
+    /* Copy GUI */
     #gui {
       display: none;
       position: fixed;
@@ -79,7 +178,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.88);
       z-index: 9999;
       justify-content: center;
       align-items: center;
@@ -88,74 +187,149 @@
     .gui-box {
       background: #1a1a2e;
       border: 2px solid #e94560;
-      border-radius: 16px;
-      padding: 25px;
+      border-radius: 18px;
+      padding: 28px;
       width: 90%;
-      max-width: 400px;
+      max-width: 420px;
       text-align: center;
+      box-shadow: 0 0 40px rgba(233, 69, 96, 0.35);
     }
 
     .gui-box h2 {
       color: #e94560;
-      margin-bottom: 15px;
-      font-size: 20px;
+      margin-bottom: 16px;
+      font-size: 21px;
     }
 
     .gui-box textarea {
       width: 100%;
-      height: 140px;
+      height: 145px;
       background: #0f172a;
       border: 1px solid #334155;
-      border-radius: 10px;
-      color: white;
-      padding: 12px;
+      border-radius: 12px;
+      color: #e2e8f0;
+      padding: 14px;
       font-size: 13px;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
       resize: none;
+      font-family: monospace;
     }
 
     .gui-box button {
       background: #e94560;
       color: white;
       border: none;
-      padding: 12px 25px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
+      padding: 12px 26px;
+      border-radius: 11px;
+      font-size: 15px;
+      font-weight: 700;
       cursor: pointer;
       margin: 5px;
+      transition: 0.3s;
     }
 
     .gui-box button:hover {
       background: #ff6b81;
+      transform: scale(1.05);
+    }
+
+    .close-btn {
+      background: transparent !important;
+      border: 1px solid #64748b !important;
+      color: #94a3b8 !important;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <img class="avatar" src="https://via.placeholder.com/120" alt="Alex">
+  <!-- Top Menu -->
+  <div class="top-bar">
+    <button class="menu-btn" onclick="showPage('main')" id="btnMain">Main</button>
+    <button class="menu-btn active" onclick="showPage('scripts')" id="btnScripts">Scripts</button>
+    <button class="menu-btn" onclick="showPage('paids')" id="btnPaids">Paids</button>
+  </div>
+
+  <!-- MAIN PAGE -->
+  <div class="page" id="main">
+    <img class="avatar" src="https://plain-weur-prod-public.komododecks.com/202610/10/p8Epw0S4n3F5BVBU6L7u/image.jpg" alt="Alex">
     <h1>Alex Official Scripts</h1>
     <p class="bio">🎮 Gamer | 💥 Exploits | 💰 Paids</p>
 
-    <div class="link" onclick="abrirGUI(1)">+1 Escape Monkey Script</div>
-    <div class="link" onclick="abrirGUI(2)">Muscle Beach Arena Script</div>
-    <div class="link" onclick="abrirGUI(3)">Cat Piece V3 Script</div>
-    <div class="link" onclick="abrirGUI(4)">Final Fire Script</div>
-    <div class="link" onclick="abrirGUI(5)">Muscle Masters Script</div>
-    <div class="link" onclick="abrirGUI(6)">Cat Piece V2 Script</div>
+    <div class="info-box">
+      <h3>+1 Escape Monkey Script</h3>
+      <p>Complete script for Escape Monkey. Includes auto farm, speed boost, auto collect and more useful features to progress faster.</p>
+      <span class="tag">FREE</span>
+    </div>
+
+    <div class="info-box">
+      <h3>Muscle Beach Arena Script</h3>
+      <p>Powerful script for Muscle Beach Arena with auto train, strength boost, combat helpers and quality of life improvements.</p>
+      <span class="tag">FREE</span>
+    </div>
+
+    <div class="info-box">
+      <h3>Cat Piece V3 Script</h3>
+      <p>Improved version of Cat Piece. Features auto farm, quest helper, smart teleports and better performance.</p>
+      <span class="tag">FREE</span>
+    </div>
+
+    <div class="info-box">
+      <h3>Final Fire Script</h3>
+      <p>Advanced paid panel for Final Fire with full features, clean UI and regular updates.</p>
+      <span class="tag">PAID</span>
+    </div>
+
+    <div class="info-box">
+      <h3>Muscle Masters Script</h3>
+      <p>Auto train, auto rebirth and multiple improvements designed to make grinding in Muscle Masters much easier.</p>
+      <span class="tag">FREE</span>
+    </div>
+
+    <div class="info-box">
+      <h3>Cat Piece V2 Script</h3>
+      <p>Previous stable version of Cat Piece. Still fully functional and reliable for players who prefer it.</p>
+      <span class="tag">FREE</span>
+    </div>
 
     <p class="footer">@Made By : AlexOfficial</p>
   </div>
 
-  <!-- GUI -->
+  <!-- SCRIPTS PAGE -->
+  <div class="page active" id="scripts">
+    <img class="avatar" src="https://plain-weur-prod-public.komododecks.com/202610/10/p8Epw0S4n3F5BVBU6L7u/image.jpg" alt="Alex">
+    <h1>Alex Official Scripts</h1>
+    <p class="bio">🎮 Gamer | 💥 Exploits | 💰 Paids</p>
+
+    <div class="link" onclick="openGUI(1)">+1 Escape Monkey Script</div>
+    <div class="link" onclick="openGUI(2)">Muscle Beach Arena Script</div>
+    <div class="link" onclick="openGUI(3)">Cat Piece V3 Script</div>
+    <div class="link" onclick="openGUI(4)">Final Fire Script</div>
+    <div class="link" onclick="openGUI(5)">Muscle Masters Script</div>
+    <div class="link" onclick="openGUI(6)">Cat Piece V2 Script</div>
+
+    <p class="footer">@Made By : AlexOfficial</p>
+  </div>
+
+  <!-- PAIDS PAGE -->
+  <div class="page" id="paids">
+    <img class="avatar" src="https://plain-weur-prod-public.komododecks.com/202610/10/p8Epw0S4n3F5BVBU6L7u/image.jpg" alt="Alex">
+    <h1>Alex Official Scripts</h1>
+    <p class="bio">🎮 Gamer | 💥 Exploits | 💰 Paids</p>
+
+    <div class="coming-soon">COMING SOON...</div>
+    <p class="coming-sub">Premium scripts and exclusive panels will be available here soon.</p>
+
+    <p class="footer">@Made By : AlexOfficial</p>
+  </div>
+
+  <!-- Copy GUI -->
   <div id="gui">
     <div class="gui-box">
       <h2>COPY the Script</h2>
       <textarea id="texto" readonly></textarea>
       <br>
-      <button onclick="copiar()">COPY</button>
-      <button onclick="cerrarGUI()">Cerrar</button>
+      <button onclick="copyScript()">COPY</button>
+      <button class="close-btn" onclick="closeGUI()">Close</button>
     </div>
   </div>
 
@@ -169,20 +343,28 @@
       6: `loadstring(game:HttpGet("https://raw.githubusercontent.com/alexgamingofficial2026-del/AlexGG2/refs/heads/main/CatPieceV2"))()`
     };
 
-    function abrirGUI(numero) {
-      document.getElementById("texto").value = scripts[numero];
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+
+      document.getElementById(name).classList.add('active');
+      document.getElementById('btn' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('active');
+    }
+
+    function openGUI(num) {
+      document.getElementById("texto").value = scripts[num];
       document.getElementById("gui").style.display = "flex";
     }
 
-    function cerrarGUI() {
+    function closeGUI() {
       document.getElementById("gui").style.display = "none";
     }
 
-    function copiar() {
-      const caja = document.getElementById("texto");
-      caja.select();
+    function copyScript() {
+      const box = document.getElementById("texto");
+      box.select();
       document.execCommand("copy");
-      alert("¡Script copiado!");
+      alert("Script copied!");
     }
   </script>
 
